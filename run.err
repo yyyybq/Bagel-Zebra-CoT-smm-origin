@@ -1,0 +1,150 @@
+W1025 21:14:01.211000 2808260 site-packages/torch/distributed/run.py:793] 
+W1025 21:14:01.211000 2808260 site-packages/torch/distributed/run.py:793] *****************************************
+W1025 21:14:01.211000 2808260 site-packages/torch/distributed/run.py:793] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1025 21:14:01.211000 2808260 site-packages/torch/distributed/run.py:793] *****************************************
+wandb: WARNING `resume` will be ignored since W&B syncing is set to `offline`. Starting a new run with run id h200-zebra-cot-20251025_211359-run0.
+[rank2]:[W1025 21:14:15.369652204 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 2]  using GPU 2 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank7]:[W1025 21:14:15.502472578 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 7]  using GPU 7 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank5]:[W1025 21:14:15.521361526 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 5]  using GPU 5 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank4]:[W1025 21:14:15.539230512 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 4]  using GPU 4 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank1]:[W1025 21:14:15.559660446 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 1]  using GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank3]:[W1025 21:14:15.636618409 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 3]  using GPU 3 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[rank6]:[W1025 21:14:15.814060558 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 6]  using GPU 6 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+wandb: Tracking run with wandb version 0.22.2
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+wandb: Run data is saved locally in /scratch/by2593/Bagel-Zebra-CoT-origin/wandb/offline-run-20251025_211414-h200-zebra-cot-20251025_211359-run0
+wandb: Detected [huggingface_hub.inference] in use.
+wandb: Use W&B Weave for improved LLM call tracing. Install Weave with `pip install weave` then add `import weave` to the top of your script.
+wandb: For more information, check out the docs at: https://weave-docs.wandb.ai/
+[rank0]:[W1025 21:14:16.181889866 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+[[34m2025-10-25 21:14:20[0m] Training arguments TrainingArguments(visual_gen=True, visual_und=True, results_dir='results/', checkpoint_dir='results/checkpoints_smm_semantic_part1_v1_origin/', wandb_project='zebra-cot', wandb_name='h200-zebra-cot-20251025_211359', wandb_runid='0', wandb_resume='allow', wandb_offline=True, global_seed=4396, auto_resume=True, resume_from='/scratch/by2593/hf_cache/hub/models--multimodal-reasoning-lab--Bagel-Zebra-CoT/snapshots/ebce32410ee2062d073feae484ea2c6c1515fba8', resume_model_only=True, finetune_from_ema=False, finetune_from_hf=True, log_every=1, save_every=50, total_steps=5000, warmup_steps=50, lr_scheduler='cosine', lr=2e-05, min_lr=1e-06, beta1=0.9, beta2=0.95, eps=1e-08, ema=0.9999, max_grad_norm=1.0, timestep_shift=1.0, mse_weight=1.0, ce_weight=1.0, ce_loss_reweighting=False, expected_num_tokens=40000, num_replicate=1, num_shard=8, sharding_strategy='HYBRID_SHARD', backward_prefetch='BACKWARD_PRE', cpu_offload=True, freeze_llm=False, freeze_vit=False, freeze_vae=True, freeze_und=False, copy_init_moe=True, use_flex=False)
+[[34m2025-10-25 21:14:20[0m] Model arguments ModelArguments(model_path='/scratch/by2593/hf_cache/hub/models--multimodal-reasoning-lab--Bagel-Zebra-CoT/snapshots/ebce32410ee2062d073feae484ea2c6c1515fba8', llm_path='hf/Qwen2.5-0.5B-Instruct/', llm_qk_norm=True, tie_word_embeddings=False, layer_module='Qwen2MoTDecoderLayer', vae_path='flux/vae/ae.safetensors', vit_path='hf/siglip-so400m-14-980-flash-attn2-navit/', max_latent_size=64, latent_patch_size=2, vit_patch_size=14, vit_max_num_patch_per_side=70, connector_act='gelu_pytorch_tanh', interpolate_pos=False, vit_select_layer=-2, vit_rope=False, text_cond_dropout_prob=0.1, vae_cond_dropout_prob=0.3, vit_cond_dropout_prob=0.3)
+[[34m2025-10-25 21:14:20[0m] Data arguments DataArguments(dataset_config_file='./data/configs/example_smm_semantic.yaml', prefetch_factor=2, num_workers=1, max_num_tokens_per_sample=40000, max_num_tokens=40000, prefer_buffer_before=10000, max_buffer_size=50, data_seed=42)
+[[34m2025-10-25 21:16:50[0m] Loading checkpoint from /scratch/by2593/hf_cache/hub/models--multimodal-reasoning-lab--Bagel-Zebra-CoT/snapshots/ebce32410ee2062d073feae484ea2c6c1515fba8.
+[[34m2025-10-25 21:18:10[0m] _IncompatibleKeys(missing_keys=['latent_pos_embed.pos_embed', 'vit_pos_embed.pos_embed'], unexpected_keys=[])
+[[34m2025-10-25 21:18:10[0m] replicaing ema model from /scratch/by2593/hf_cache/hub/models--multimodal-reasoning-lab--Bagel-Zebra-CoT/snapshots/ebce32410ee2062d073feae484ea2c6c1515fba8/model_bf16.safetensors.
+[[34m2025-10-25 21:18:20[0m] _IncompatibleKeys(missing_keys=['latent_pos_embed.pos_embed', 'vit_pos_embed.pos_embed'], unexpected_keys=[])
+[[34m2025-10-25 21:18:51[0m] Training for 5000 steps, starting at 0...
+[[34m2025-10-25 21:20:20[0m] (step=0000000) Train Loss mse: 0.0185, Train Loss ce: 1.8625, Train Steps/Sec: 0.01, 
+[[34m2025-10-25 21:20:57[0m] (step=0000001) Train Loss mse: 0.0168, Train Loss ce: 1.8560, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:21:32[0m] (step=0000002) Train Loss mse: 0.0208, Train Loss ce: 1.8139, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:22:13[0m] (step=0000003) Train Loss mse: 0.0200, Train Loss ce: 1.6772, Train Steps/Sec: 0.02, 
+[[34m2025-10-25 21:22:49[0m] (step=0000004) Train Loss mse: 0.0164, Train Loss ce: 1.7684, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:23:31[0m] (step=0000005) Train Loss mse: 0.0199, Train Loss ce: 1.8439, Train Steps/Sec: 0.02, 
+[[34m2025-10-25 21:24:04[0m] (step=0000006) Train Loss mse: 0.0166, Train Loss ce: 1.6152, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:24:40[0m] (step=0000007) Train Loss mse: 0.0181, Train Loss ce: 1.7539, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:25:15[0m] (step=0000008) Train Loss mse: 0.0164, Train Loss ce: 1.7400, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:25:49[0m] (step=0000009) Train Loss mse: 0.0167, Train Loss ce: 1.8076, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:26:25[0m] (step=0000010) Train Loss mse: 0.0233, Train Loss ce: 1.4616, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:26:56[0m] (step=0000011) Train Loss mse: 0.0168, Train Loss ce: 1.6259, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:27:37[0m] (step=0000012) Train Loss mse: 0.0170, Train Loss ce: 1.5824, Train Steps/Sec: 0.02, 
+[[34m2025-10-25 21:28:08[0m] (step=0000013) Train Loss mse: 0.0189, Train Loss ce: 1.5811, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:28:42[0m] (step=0000014) Train Loss mse: 0.0221, Train Loss ce: 1.2260, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:29:16[0m] (step=0000015) Train Loss mse: 0.0140, Train Loss ce: 1.1394, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:29:49[0m] (step=0000016) Train Loss mse: 0.0163, Train Loss ce: 1.1381, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:30:26[0m] (step=0000017) Train Loss mse: 0.0229, Train Loss ce: 1.0493, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:31:02[0m] (step=0000018) Train Loss mse: 0.0169, Train Loss ce: 1.0484, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:31:43[0m] (step=0000019) Train Loss mse: 0.0187, Train Loss ce: 0.5945, Train Steps/Sec: 0.02, 
+[[34m2025-10-25 21:32:19[0m] (step=0000020) Train Loss mse: 0.0158, Train Loss ce: 0.6128, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:33:00[0m] (step=0000021) Train Loss mse: 0.0157, Train Loss ce: 0.4668, Train Steps/Sec: 0.02, 
+[[34m2025-10-25 21:33:33[0m] (step=0000022) Train Loss mse: 0.0181, Train Loss ce: 0.4042, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:34:07[0m] (step=0000023) Train Loss mse: 0.0209, Train Loss ce: 0.2930, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:34:40[0m] (step=0000024) Train Loss mse: 0.0190, Train Loss ce: 0.2934, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:35:16[0m] (step=0000025) Train Loss mse: 0.0144, Train Loss ce: 0.2189, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:35:49[0m] (step=0000026) Train Loss mse: 0.0185, Train Loss ce: 0.1414, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:36:22[0m] (step=0000027) Train Loss mse: 0.0166, Train Loss ce: 0.1090, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:36:59[0m] (step=0000028) Train Loss mse: 0.0202, Train Loss ce: 0.1350, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:37:36[0m] (step=0000029) Train Loss mse: 0.0175, Train Loss ce: 0.1263, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:38:11[0m] (step=0000030) Train Loss mse: 0.0165, Train Loss ce: 0.0860, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:38:47[0m] (step=0000031) Train Loss mse: 0.0169, Train Loss ce: 0.0864, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:39:20[0m] (step=0000032) Train Loss mse: 0.0218, Train Loss ce: 0.0792, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:39:57[0m] (step=0000033) Train Loss mse: 0.0203, Train Loss ce: 0.0852, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:40:30[0m] (step=0000034) Train Loss mse: 0.0200, Train Loss ce: 0.0734, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:41:07[0m] (step=0000035) Train Loss mse: 0.0166, Train Loss ce: 0.0830, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:41:42[0m] (step=0000036) Train Loss mse: 0.0167, Train Loss ce: 0.0776, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:42:14[0m] (step=0000037) Train Loss mse: 0.0175, Train Loss ce: 0.0556, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:42:51[0m] (step=0000038) Train Loss mse: 0.0176, Train Loss ce: 0.0520, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:43:23[0m] (step=0000039) Train Loss mse: 0.0144, Train Loss ce: 0.0607, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:43:59[0m] (step=0000040) Train Loss mse: 0.0151, Train Loss ce: 0.0683, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:44:32[0m] (step=0000041) Train Loss mse: 0.0180, Train Loss ce: 0.0456, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:45:08[0m] (step=0000042) Train Loss mse: 0.0157, Train Loss ce: 0.0620, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:45:51[0m] (step=0000043) Train Loss mse: 0.0167, Train Loss ce: 0.0552, Train Steps/Sec: 0.02, 
+[[34m2025-10-25 21:46:28[0m] (step=0000044) Train Loss mse: 0.0143, Train Loss ce: 0.0522, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:47:08[0m] (step=0000045) Train Loss mse: 0.0159, Train Loss ce: 0.0494, Train Steps/Sec: 0.02, 
+[[34m2025-10-25 21:47:41[0m] (step=0000046) Train Loss mse: 0.0160, Train Loss ce: 0.0484, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:48:14[0m] (step=0000047) Train Loss mse: 0.0187, Train Loss ce: 0.0599, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:48:52[0m] (step=0000048) Train Loss mse: 0.0173, Train Loss ce: 0.0629, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:49:26[0m] (step=0000049) Train Loss mse: 0.0167, Train Loss ce: 0.0466, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:50:00[0m] (step=0000050) Train Loss mse: 0.0150, Train Loss ce: 0.0540, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:50:01[0m] Saving checkpoint to results/checkpoints_smm_semantic_part1_v1_origin/0000050.
+/scratch/by2593/miniconda3/envs/bagel/lib/python3.10/site-packages/torch/distributed/fsdp/fully_sharded_data_parallel.py:690: FutureWarning: FSDP.state_dict_type() and FSDP.set_state_dict_type() are being deprecated. Please use APIs, get_state_dict() and set_state_dict(), which can support different parallelisms, FSDP1, FSDP2, DDP. API doc: https://pytorch.org/docs/stable/distributed.checkpoint.html#torch.distributed.checkpoint.state_dict.get_state_dict .Tutorial: https://pytorch.org/tutorials/recipes/distributed_checkpoint_recipe.html .
+  warnings.warn(
+/scratch/by2593/miniconda3/envs/bagel/lib/python3.10/site-packages/torch/distributed/fsdp/fully_sharded_data_parallel.py:690: FutureWarning: FSDP.state_dict_type() and FSDP.set_state_dict_type() are being deprecated. Please use APIs, get_state_dict() and set_state_dict(), which can support different parallelisms, FSDP1, FSDP2, DDP. API doc: https://pytorch.org/docs/stable/distributed.checkpoint.html#torch.distributed.checkpoint.state_dict.get_state_dict .Tutorial: https://pytorch.org/tutorials/recipes/distributed_checkpoint_recipe.html .
+  warnings.warn(
+/scratch/by2593/miniconda3/envs/bagel/lib/python3.10/site-packages/torch/distributed/fsdp/fully_sharded_data_parallel.py:690: FutureWarning: FSDP.state_dict_type() and FSDP.set_state_dict_type() are being deprecated. Please use APIs, get_state_dict() and set_state_dict(), which can support different parallelisms, FSDP1, FSDP2, DDP. API doc: https://pytorch.org/docs/stable/distributed.checkpoint.html#torch.distributed.checkpoint.state_dict.get_state_dict .Tutorial: https://pytorch.org/tutorials/recipes/distributed_checkpoint_recipe.html .
+  warnings.warn(
+/scratch/by2593/miniconda3/envs/bagel/lib/python3.10/site-packages/torch/distributed/fsdp/fully_sharded_data_parallel.py:690: FutureWarning: FSDP.state_dict_type() and FSDP.set_state_dict_type() are being deprecated. Please use APIs, get_state_dict() and set_state_dict(), which can support different parallelisms, FSDP1, FSDP2, DDP. API doc: https://pytorch.org/docs/stable/distributed.checkpoint.html#torch.distributed.checkpoint.state_dict.get_state_dict .Tutorial: https://pytorch.org/tutorials/recipes/distributed_checkpoint_recipe.html .
+  warnings.warn(
+/scratch/by2593/miniconda3/envs/bagel/lib/python3.10/site-packages/torch/distributed/fsdp/fully_sharded_data_parallel.py:690: FutureWarning: FSDP.state_dict_type() and FSDP.set_state_dict_type() are being deprecated. Please use APIs, get_state_dict() and set_state_dict(), which can support different parallelisms, FSDP1, FSDP2, DDP. API doc: https://pytorch.org/docs/stable/distributed.checkpoint.html#torch.distributed.checkpoint.state_dict.get_state_dict .Tutorial: https://pytorch.org/tutorials/recipes/distributed_checkpoint_recipe.html .
+  warnings.warn(
+/scratch/by2593/miniconda3/envs/bagel/lib/python3.10/site-packages/torch/distributed/fsdp/fully_sharded_data_parallel.py:690: FutureWarning: FSDP.state_dict_type() and FSDP.set_state_dict_type() are being deprecated. Please use APIs, get_state_dict() and set_state_dict(), which can support different parallelisms, FSDP1, FSDP2, DDP. API doc: https://pytorch.org/docs/stable/distributed.checkpoint.html#torch.distributed.checkpoint.state_dict.get_state_dict .Tutorial: https://pytorch.org/tutorials/recipes/distributed_checkpoint_recipe.html .
+  warnings.warn(
+/scratch/by2593/miniconda3/envs/bagel/lib/python3.10/site-packages/torch/distributed/fsdp/fully_sharded_data_parallel.py:690: FutureWarning: FSDP.state_dict_type() and FSDP.set_state_dict_type() are being deprecated. Please use APIs, get_state_dict() and set_state_dict(), which can support different parallelisms, FSDP1, FSDP2, DDP. API doc: https://pytorch.org/docs/stable/distributed.checkpoint.html#torch.distributed.checkpoint.state_dict.get_state_dict .Tutorial: https://pytorch.org/tutorials/recipes/distributed_checkpoint_recipe.html .
+  warnings.warn(
+/scratch/by2593/miniconda3/envs/bagel/lib/python3.10/site-packages/torch/distributed/fsdp/fully_sharded_data_parallel.py:690: FutureWarning: FSDP.state_dict_type() and FSDP.set_state_dict_type() are being deprecated. Please use APIs, get_state_dict() and set_state_dict(), which can support different parallelisms, FSDP1, FSDP2, DDP. API doc: https://pytorch.org/docs/stable/distributed.checkpoint.html#torch.distributed.checkpoint.state_dict.get_state_dict .Tutorial: https://pytorch.org/tutorials/recipes/distributed_checkpoint_recipe.html .
+  warnings.warn(
+[[34m2025-10-25 21:55:05[0m] Sorted checkpoint directories: ['0000050']
+[[34m2025-10-25 21:55:40[0m] (step=0000051) Train Loss mse: 0.0139, Train Loss ce: 0.0539, Train Steps/Sec: 0.00, 
+[[34m2025-10-25 21:56:13[0m] (step=0000052) Train Loss mse: 0.0176, Train Loss ce: 0.0495, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:56:51[0m] (step=0000053) Train Loss mse: 0.0168, Train Loss ce: 0.0485, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:57:23[0m] (step=0000054) Train Loss mse: 0.0151, Train Loss ce: 0.0446, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:58:00[0m] (step=0000055) Train Loss mse: 0.0144, Train Loss ce: 0.0490, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:58:37[0m] (step=0000056) Train Loss mse: 0.0143, Train Loss ce: 0.0461, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:59:11[0m] (step=0000057) Train Loss mse: 0.0152, Train Loss ce: 0.0459, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 21:59:48[0m] (step=0000058) Train Loss mse: 0.0152, Train Loss ce: 0.0402, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 22:00:22[0m] (step=0000059) Train Loss mse: 0.0145, Train Loss ce: 0.0566, Train Steps/Sec: 0.03, 
+[[34m2025-10-25 22:00:59[0m] (step=0000060) Train Loss mse: 0.0174, Train Loss ce: 0.0509, Train Steps/Sec: 0.03, 
+[rank6]: Traceback (most recent call last):
+[rank6]:   File "/scratch/by2593/Bagel-Zebra-CoT-origin/train/pretrain_unified_navit.py", line 727, in <module>
+[rank6]:     main()
+[rank6]:   File "/scratch/by2593/Bagel-Zebra-CoT-origin/train/pretrain_unified_navit.py", line 609, in main
+[rank6]:     assert not training_args.visual_und
+[rank6]: AssertionError
+[rank6]:[W1025 22:01:04.973896433 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+W1025 22:01:11.227000 2808260 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2808294 closing signal SIGTERM
+W1025 22:01:11.264000 2808260 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2808295 closing signal SIGTERM
+W1025 22:01:11.265000 2808260 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2808296 closing signal SIGTERM
+W1025 22:01:11.271000 2808260 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2808297 closing signal SIGTERM
+W1025 22:01:11.314000 2808260 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2808298 closing signal SIGTERM
+W1025 22:01:11.332000 2808260 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2808299 closing signal SIGTERM
+W1025 22:01:11.357000 2808260 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2808301 closing signal SIGTERM
+E1025 22:01:37.654000 2808260 site-packages/torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 6 (pid: 2808300) of binary: /scratch/by2593/miniconda3/envs/bagel/bin/python3.10
+Traceback (most recent call last):
+  File "/scratch/by2593/miniconda3/envs/bagel/bin/torchrun", line 7, in <module>
+    sys.exit(main())
+  File "/scratch/by2593/miniconda3/envs/bagel/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/scratch/by2593/miniconda3/envs/bagel/lib/python3.10/site-packages/torch/distributed/run.py", line 919, in main
+    run(args)
+  File "/scratch/by2593/miniconda3/envs/bagel/lib/python3.10/site-packages/torch/distributed/run.py", line 910, in run
+    elastic_launch(
+  File "/scratch/by2593/miniconda3/envs/bagel/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/scratch/by2593/miniconda3/envs/bagel/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train/pretrain_unified_navit.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-10-25_22:01:11
+  host      : gh129.hpc.nyu.edu
+  rank      : 6 (local_rank: 6)
+  exitcode  : 1 (pid: 2808300)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

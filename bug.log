@@ -1,0 +1,13 @@
+现在我明白问题了！模型目录中有 model_bf16.safetensors 但是代码在寻找 model.safetensors。让我检查一下 fsdp_utils.py 中的加载逻辑：
+
+Read fsdp_utils.py, lines 155 to 165
+
+找到问题了！代码在寻找 model.safetensors，但实际文件名是 model_bf16.safetensors。我需要修改加载逻辑来适配实际的文件名。
+
+
+
+
+cd /scratch/by2593/Bagel-Zebra-CoT-origin && PYTHONPATH=/scratch/by2593/Bagel-Zebra-CoT-origin 
+
+
+

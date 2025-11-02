@@ -1,0 +1,871 @@
+{'block_dataset': {'dataset_names': ['block_dataset'], 'jsonl_path_list': ['/scratch/by2593/project/SMM/SMM_data/semantic_block_train_part1.jsonl'], 'num_used_data': 'None', 'image_prefix_dir': '/scratch/by2593/project/SMM/semantic_blocks_part1', 'image_transform_args': {'image_stride': 16, 'max_image_size': 512, 'min_image_size': 512}, 'vit_image_transform_args': {'image_stride': 14, 'max_image_size': 512, 'min_image_size': 512}, 'weight': 1.0, 'is_mandatory': True}}
+rank-3 worker-0 dataset-block_dataset: resuming data at row#0
+{'block_dataset': {'dataset_names': ['block_dataset'], 'jsonl_path_list': ['/scratch/by2593/project/SMM/SMM_data/semantic_block_train_part1.jsonl'], 'num_used_data': 'None', 'image_prefix_dir': '/scratch/by2593/project/SMM/semantic_blocks_part1', 'image_transform_args': {'image_stride': 16, 'max_image_size': 512, 'min_image_size': 512}, 'vit_image_transform_args': {'image_stride': 14, 'max_image_size': 512, 'min_image_size': 512}, 'weight': 1.0, 'is_mandatory': True}}
+{'block_dataset': {'dataset_names': ['block_dataset'], 'jsonl_path_list': ['/scratch/by2593/project/SMM/SMM_data/semantic_block_train_part1.jsonl'], 'num_used_data': 'None', 'image_prefix_dir': '/scratch/by2593/project/SMM/semantic_blocks_part1', 'image_transform_args': {'image_stride': 16, 'max_image_size': 512, 'min_image_size': 512}, 'vit_image_transform_args': {'image_stride': 14, 'max_image_size': 512, 'min_image_size': 512}, 'weight': 1.0, 'is_mandatory': True}}
+rank-6 worker-0 dataset-block_dataset: resuming data at row#0
+rank-4 worker-0 dataset-block_dataset: resuming data at row#0
+FullyShardedDataParallel(
+  (_fsdp_wrapped_module): Bagel(
+    (language_model): Qwen2ForCausalLM(
+      (model): Qwen2Model(
+        (embed_tokens): Embedding(152064, 3584)
+        (layers): ModuleList(
+          (0-27): 28 x FullyShardedDataParallel(
+            (_fsdp_wrapped_module): CheckpointWrapper(
+              (_checkpoint_wrapped_module): Qwen2MoTDecoderLayer(
+                (self_attn): PackedAttentionMoT(
+                  (q_proj): Linear(in_features=3584, out_features=3584, bias=True)
+                  (k_proj): Linear(in_features=3584, out_features=512, bias=True)
+                  (v_proj): Linear(in_features=3584, out_features=512, bias=True)
+                  (o_proj): Linear(in_features=3584, out_features=3584, bias=False)
+                  (q_norm): Qwen2RMSNorm((128,), eps=1e-06)
+                  (k_norm): Qwen2RMSNorm((128,), eps=1e-06)
+                  (q_norm_moe_gen): Qwen2RMSNorm((128,), eps=1e-06)
+                  (k_norm_moe_gen): Qwen2RMSNorm((128,), eps=1e-06)
+                  (q_proj_moe_gen): Linear(in_features=3584, out_features=3584, bias=True)
+                  (k_proj_moe_gen): Linear(in_features=3584, out_features=512, bias=True)
+                  (v_proj_moe_gen): Linear(in_features=3584, out_features=512, bias=True)
+                  (o_proj_moe_gen): Linear(in_features=3584, out_features=3584, bias=False)
+                )
+                (mlp): Qwen2MLP(
+                  (gate_proj): Linear(in_features=3584, out_features=18944, bias=False)
+                  (up_proj): Linear(in_features=3584, out_features=18944, bias=False)
+                  (down_proj): Linear(in_features=18944, out_features=3584, bias=False)
+                  (act_fn): SiLU()
+                )
+                (mlp_moe_gen): Qwen2MLP(
+                  (gate_proj): Linear(in_features=3584, out_features=18944, bias=False)
+                  (up_proj): Linear(in_features=3584, out_features=18944, bias=False)
+                  (down_proj): Linear(in_features=18944, out_features=3584, bias=False)
+                  (act_fn): SiLU()
+                )
+                (input_layernorm): Qwen2RMSNorm((3584,), eps=1e-06)
+                (input_layernorm_moe_gen): Qwen2RMSNorm((3584,), eps=1e-06)
+                (post_attention_layernorm): Qwen2RMSNorm((3584,), eps=1e-06)
+                (post_attention_layernorm_moe_gen): Qwen2RMSNorm((3584,), eps=1e-06)
+              )
+            )
+          )
+        )
+        (norm): Qwen2RMSNorm((3584,), eps=1e-06)
+        (norm_moe_gen): Qwen2RMSNorm((3584,), eps=1e-06)
+        (rotary_emb): Qwen2RotaryEmbedding()
+      )
+      (lm_head): Linear(in_features=3584, out_features=152064, bias=False)
+    )
+    (time_embedder): FullyShardedDataParallel(
+      (_fsdp_wrapped_module): TimestepEmbedder(
+        (mlp): Sequential(
+          (0): Linear(in_features=256, out_features=3584, bias=True)
+          (1): SiLU()
+          (2): Linear(in_features=3584, out_features=3584, bias=True)
+        )
+      )
+    )
+    (vae2llm): Linear(in_features=64, out_features=3584, bias=True)
+    (llm2vae): Linear(in_features=3584, out_features=64, bias=True)
+    (latent_pos_embed): FullyShardedDataParallel(
+      (_fsdp_wrapped_module): PositionEmbedding()
+    )
+    (vit_model): SiglipVisionModel(
+      (vision_model): FullyShardedDataParallel(
+        (_fsdp_wrapped_module): SiglipVisionTransformer(
+          (embeddings): SiglipVisionEmbeddings(
+            (position_embedding): Embedding(4900, 1152)
+            (patch_embedding): Linear(in_features=588, out_features=1152, bias=True)
+          )
+          (encoder): SiglipEncoder(
+            (layers): ModuleList(
+              (0-25): 26 x FullyShardedDataParallel(
+                (_fsdp_wrapped_module): CheckpointWrapper(
+                  (_checkpoint_wrapped_module): SiglipEncoderLayer(
+                    (self_attn): SiglipFlashAttention2(
+                      (k_proj): Linear(in_features=1152, out_features=1152, bias=True)
+                      (v_proj): Linear(in_features=1152, out_features=1152, bias=True)
+                      (q_proj): Linear(in_features=1152, out_features=1152, bias=True)
+                      (out_proj): Linear(in_features=1152, out_features=1152, bias=True)
+                    )
+                    (layer_norm1): LayerNorm((1152,), eps=1e-06, elementwise_affine=True)
+                    (mlp): SiglipMLP(
+                      (activation_fn): PytorchGELUTanh()
+                      (fc1): Linear(in_features=1152, out_features=4304, bias=True)
+                      (fc2): Linear(in_features=4304, out_features=1152, bias=True)
+                    )
+                    (layer_norm2): LayerNorm((1152,), eps=1e-06, elementwise_affine=True)
+                  )
+                )
+              )
+            )
+          )
+          (post_layernorm): LayerNorm((1152,), eps=1e-06, elementwise_affine=True)
+        )
+      )
+    )
+    (connector): FullyShardedDataParallel(
+      (_fsdp_wrapped_module): CheckpointWrapper(
+        (_checkpoint_wrapped_module): MLPconnector(
+          (activation_fn): PytorchGELUTanh()
+          (fc1): Linear(in_features=1152, out_features=3584, bias=True)
+          (fc2): Linear(in_features=3584, out_features=3584, bias=True)
+        )
+      )
+    )
+    (vit_pos_embed): FullyShardedDataParallel(
+      (_fsdp_wrapped_module): PositionEmbedding()
+    )
+  )
+)
+_flat_param True
+language_model.model.layers.0._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.1._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.2._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.3._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.4._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.5._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.6._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.7._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.8._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.9._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.10._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.11._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.12._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.13._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.14._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.15._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.16._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.17._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.18._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.19._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.20._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.21._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.22._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.23._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.24._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.25._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.26._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.27._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+time_embedder._fsdp_wrapped_module._flat_param True
+latent_pos_embed._fsdp_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.0._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.1._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.2._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.3._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.4._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.5._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.6._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.7._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.8._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.9._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.10._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.11._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.12._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.13._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.14._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.15._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.16._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.17._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.18._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.19._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.20._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.21._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.22._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.23._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.24._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.25._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+connector._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_pos_embed._fsdp_wrapped_module._flat_param False
+{'block_dataset': {'dataset_names': ['block_dataset'], 'jsonl_path_list': ['/scratch/by2593/project/SMM/SMM_data/semantic_block_train_part1.jsonl'], 'num_used_data': 'None', 'image_prefix_dir': '/scratch/by2593/project/SMM/semantic_blocks_part1', 'image_transform_args': {'image_stride': 16, 'max_image_size': 512, 'min_image_size': 512}, 'vit_image_transform_args': {'image_stride': 14, 'max_image_size': 512, 'min_image_size': 512}, 'weight': 1.0, 'is_mandatory': True}}
+Preparing Dataset block_dataset/block_dataset
+{'block_dataset': {'dataset_names': ['block_dataset'], 'jsonl_path_list': ['/scratch/by2593/project/SMM/SMM_data/semantic_block_train_part1.jsonl'], 'num_used_data': 'None', 'image_prefix_dir': '/scratch/by2593/project/SMM/semantic_blocks_part1', 'image_transform_args': {'image_stride': 16, 'max_image_size': 512, 'min_image_size': 512}, 'vit_image_transform_args': {'image_stride': 14, 'max_image_size': 512, 'min_image_size': 512}, 'weight': 1.0, 'is_mandatory': True}}
+rank-0 worker-0 dataset-block_dataset: resuming data at row#0
+rank-7 worker-0 dataset-block_dataset: resuming data at row#0
+{'block_dataset': {'dataset_names': ['block_dataset'], 'jsonl_path_list': ['/scratch/by2593/project/SMM/SMM_data/semantic_block_train_part1.jsonl'], 'num_used_data': 'None', 'image_prefix_dir': '/scratch/by2593/project/SMM/semantic_blocks_part1', 'image_transform_args': {'image_stride': 16, 'max_image_size': 512, 'min_image_size': 512}, 'vit_image_transform_args': {'image_stride': 14, 'max_image_size': 512, 'min_image_size': 512}, 'weight': 1.0, 'is_mandatory': True}}
+{'block_dataset': {'dataset_names': ['block_dataset'], 'jsonl_path_list': ['/scratch/by2593/project/SMM/SMM_data/semantic_block_train_part1.jsonl'], 'num_used_data': 'None', 'image_prefix_dir': '/scratch/by2593/project/SMM/semantic_blocks_part1', 'image_transform_args': {'image_stride': 16, 'max_image_size': 512, 'min_image_size': 512}, 'vit_image_transform_args': {'image_stride': 14, 'max_image_size': 512, 'min_image_size': 512}, 'weight': 1.0, 'is_mandatory': True}}
+rank-2 worker-0 dataset-block_dataset: resuming data at row#0
+rank-5 worker-0 dataset-block_dataset: resuming data at row#0
+{'block_dataset': {'dataset_names': ['block_dataset'], 'jsonl_path_list': ['/scratch/by2593/project/SMM/SMM_data/semantic_block_train_part1.jsonl'], 'num_used_data': 'None', 'image_prefix_dir': '/scratch/by2593/project/SMM/semantic_blocks_part1', 'image_transform_args': {'image_stride': 16, 'max_image_size': 512, 'min_image_size': 512}, 'vit_image_transform_args': {'image_stride': 14, 'max_image_size': 512, 'min_image_size': 512}, 'weight': 1.0, 'is_mandatory': True}}
+rank-1 worker-0 dataset-block_dataset: resuming data at row#0
+skip a sample with length 43202
+skip a sample with length 48060
+skip a sample with length 41094
+skip a sample with length 43245
+skip a sample with length 57756
+skip a sample with length 41160
+skip a sample with length 44611
+skip a sample with length 41094
+skip a sample with length 48060
+skip a sample with length 50787
+skip a sample with length 44611
+skip a sample with length 43245
+skip a sample with length 41106
+skip a sample with length 41160
+skip a sample with length 57756
+skip a sample with length 42480
+skip a sample with length 42486
+skip a sample with length 42486
+skip a sample with length 50787
+skip a sample with length 43202
+skip a sample with length 42480
+block_dataset repeat in rank-3 worker-0
+block_dataset repeat in rank-4 worker-0
+block_dataset repeat in rank-6 worker-0
+block_dataset repeat in rank-7 worker-0
+block_dataset repeat in rank-0 worker-0
+block_dataset repeat in rank-5 worker-0
+block_dataset repeat in rank-2 worker-0
+skip a sample with length 41106
+skip a sample with length 48060
+skip a sample with length 43202
+block_dataset repeat in rank-1 worker-0
+skip a sample with length 41094
+skip a sample with length 57756
+Yielding data with length 31517
+skip a sample with length 43245
+skip a sample with length 41160
+skip a sample with length 44611
+Yielding data with length 33637
+Yielding data with length 33154
+Yielding data with length 15542
+skip a sample with length 50787
+Yielding data with length 35486
+Yielding data with length 12716
+skip a sample with length 48060
+skip a sample with length 41094
+skip a sample with length 43245
+skip a sample with length 41160
+skip a sample with length 44611
+Yielding data with length 26172
+Yielding data with length 23933
+skip a sample with length 41106
+skip a sample with length 57756
+Yielding data with length 32737
+Yielding data with length 27691
+Yielding data with length 31628
+Yielding data with length 36149
+skip a sample with length 42486
+Yielding data with length 30708
+Yielding data with length 13411
+Yielding data with length 18973
+Yielding data with length 27959
+Yielding data with length 23821
+skip a sample with length 50787
+Yielding data with length 27474
+Yielding data with length 7870
+skip a sample with length 42486
+Yielding data with length 37241
+Yielding data with length 27998
+Yielding data with length 13811
+Yielding data with length 20795
+Yielding data with length 32169
+Yielding data with length 16921
+Yielding data with length 16202
+Yielding data with length 21081
+Yielding data with length 21217
+Yielding data with length 26994
+Yielding data with length 17856
+Yielding data with length 33309
+Yielding data with length 31064
+Yielding data with length 23492
+Yielding data with length 20761
+Yielding data with length 31378
+Yielding data with length 23451
+Yielding data with length 25220
+Yielding data with length 26611
+Yielding data with length 27250
+Yielding data with length 35216
+skip a sample with length 42480
+Yielding data with length 13720
+Yielding data with length 19578
+Yielding data with length 25498
+Yielding data with length 22109
+Yielding data with length 19619
+Yielding data with length 23415
+Yielding data with length 30332
+Yielding data with length 34858
+block_dataset repeat in rank-0 worker-0
+block_dataset repeat in rank-6 worker-0
+block_dataset repeat in rank-5 worker-0
+Yielding data with length 19720
+Yielding data with length 25991
+Yielding data with length 29387
+Yielding data with length 21979
+skip a sample with length 43202
+skip a sample with length 41106
+Yielding data with length 23402
+Yielding data with length 22465
+Yielding data with length 21998
+Yielding data with length 25679
+block_dataset repeat in rank-3 worker-0
+Yielding data with length 17957
+Yielding data with length 22013
+Yielding data with length 20711
+Yielding data with length 23461
+Yielding data with length 24469
+Yielding data with length 24915
+Yielding data with length 27691
+Yielding data with length 37262
+skip a sample with length 43202
+block_dataset repeat in rank-7 worker-0
+block_dataset repeat in rank-1 worker-0
+Yielding data with length 17288
+Yielding data with length 20687
+Yielding data with length 20361
+Yielding data with length 28560
+Yielding data with length 31247
+Yielding data with length 17983
+block_dataset repeat in rank-2 worker-0
+Yielding data with length 27946
+Yielding data with length 27631
+skip a sample with length 41094
+skip a sample with length 42480
+Yielding data with length 10650
+Yielding data with length 14641
+Yielding data with length 23037
+skip a sample with length 43245
+Yielding data with length 16219
+Yielding data with length 35530
+Yielding data with length 16208
+Yielding data with length 26188
+Yielding data with length 27937
+block_dataset repeat in rank-4 worker-0
+Yielding data with length 11424
+Yielding data with length 12453
+Yielding data with length 16146
+Yielding data with length 18287
+Yielding data with length 20791
+Yielding data with length 24236
+Yielding data with length 25579
+Yielding data with length 28956
+Yielding data with length 14121
+Yielding data with length 14781
+Yielding data with length 15221
+Yielding data with length 15921
+skip a sample with length 41160
+Yielding data with length 28466
+skip a sample with length 48060
+Yielding data with length 17646
+Yielding data with length 31256
+Yielding data with length 26792
+Yielding data with length 17122
+Yielding data with length 20057
+skip a sample with length 48060
+Yielding data with length 31691
+Yielding data with length 32761
+Yielding data with length 23701
+Yielding data with length 23722
+Yielding data with length 27340
+Yielding data with length 33869
+skip a sample with length 44611
+skip a sample with length 57756
+skip a sample with length 41094
+Yielding data with length 15091Yielding data with length 16206
+
+Yielding data with length 13157
+Yielding data with length 26843
+Yielding data with length 21094
+Yielding data with length 24549
+Yielding data with length 20404
+Yielding data with length 25400
+skip a sample with length 41106
+Yielding data with length 18332
+Yielding data with length 20708
+Yielding data with length 21310
+skip a sample with length 50787
+Yielding data with length 27881
+Yielding data with length 25557
+skip a sample with length 57756
+Yielding data with length 24894
+Yielding data with length 28219
+Yielding data with length 24140
+skip a sample with length 43245
+skip a sample with length 44611
+skip a sample with length 41160
+Yielding data with length 27592
+Yielding data with length 26168
+Yielding data with length 20709
+Yielding data with length 23581
+skip a sample with length 42486
+Yielding data with length 29274
+Yielding data with length 24805
+Yielding data with length 31112
+Yielding data with length 36407
+skip a sample with length 50787
+Yielding data with length 18262
+Yielding data with length 26439
+Yielding data with length 18322
+Yielding data with length 33505
+Yielding data with length 29023
+Yielding data with length 25487
+Yielding data with length 31643
+Yielding data with length 27712
+skip a sample with length 42486
+Yielding data with length 15735
+Yielding data with length 17616
+Yielding data with length 13811
+Yielding data with length 19365
+Yielding data with length 19566
+Yielding data with length 24227
+Yielding data with length 28214
+Yielding data with length 30026
+Yielding data with length 18195
+Yielding data with length 18206
+Yielding data with length 19699
+Yielding data with length 23103
+Yielding data with length 33474
+Yielding data with length 29109
+Yielding data with length 36518
+Yielding data with length 27659
+Yielding data with length 21031
+Yielding data with length 27532
+Yielding data with length 21080
+Yielding data with length 20740
+Yielding data with length 24066
+Yielding data with length 26959
+Yielding data with length 32162
+skip a sample with length 42480
+Yielding data with length 31373
+block_dataset repeat in rank-0 worker-0
+Yielding data with length 9629
+block_dataset repeat in rank-6 worker-0
+Yielding data with length 12734
+Yielding data with length 20622
+Yielding data with length 31650
+Yielding data with length 23291
+Yielding data with length 25245
+Yielding data with length 27515
+Yielding data with length 28296
+Yielding data with length 20698
+Yielding data with length 21726
+skip a sample with length 43202
+Yielding data with length 21768
+Yielding data with length 18011
+Yielding data with length 23070
+Yielding data with length 19691
+Yielding data with length 25171
+Yielding data with length 33860
+block_dataset repeat in rank-5 worker-0
+Yielding data with length 8964
+skip a sample with length 43202
+block_dataset repeat in rank-3 worker-0
+Yielding data with length 19248
+Yielding data with length 16262
+Yielding data with length 29186
+skip a sample with length 41106
+Yielding data with length 19245
+Yielding data with length 24191
+Yielding data with length 23133
+Yielding data with length 35614
+block_dataset repeat in rank-2 worker-0
+Yielding data with length 13769
+Yielding data with length 24400
+Yielding data with length 31113
+Yielding data with length 25652
+Yielding data with length 25500
+Yielding data with length 26979
+block_dataset repeat in rank-7 worker-0
+Yielding data with length 24263
+Yielding data with length 27393
+skip a sample with length 41094
+Yielding data with length 23188
+Yielding data with length 19658
+block_dataset repeat in rank-1 worker-0
+Yielding data with length 24787
+Yielding data with length 26221
+Yielding data with length 21409
+Yielding data with length 32059
+skip a sample with length 43245
+Yielding data with length 26058
+Yielding data with length 24507
+Yielding data with length 8292
+skip a sample with length 42480
+Yielding data with length 12746
+Yielding data with length 17288
+Yielding data with length 20793
+Yielding data with length 17252
+Yielding data with length 25240
+Yielding data with length 25304
+Yielding data with length 30376
+block_dataset repeat in rank-4 worker-0
+Yielding data with length 14138
+skip a sample with length 48060
+skip a sample with length 41160
+skip a sample with length 48060
+Yielding data with length 19684
+Yielding data with length 14748
+Yielding data with length 21158
+Yielding data with length 21425
+Yielding data with length 30781
+Yielding data with length 33027
+Yielding data with length 33537
+Yielding data with length 14837
+Yielding data with length 12766
+Yielding data with length 14115
+Yielding data with length 15474
+Yielding data with length 21749
+Yielding data with length 33147
+Yielding data with length 25621
+skip a sample with length 57756
+Yielding data with length 22466
+skip a sample with length 41094
+Yielding data with length 22413
+skip a sample with length 50787
+Yielding data with length 27913
+Yielding data with length 25090
+Yielding data with length 25551
+Yielding data with length 25335
+skip a sample with length 57756
+skip a sample with length 43245
+Yielding data with length 25947
+skip a sample with length 41160
+Yielding data with length 31872
+Yielding data with length 36109
+skip a sample with length 44611
+Yielding data with length 16234
+Yielding data with length 19945
+Yielding data with length 19685
+Yielding data with length 34186
+Yielding data with length 36943
+Yielding data with length 23090
+Yielding data with length 29034
+Yielding data with length 30067
+Yielding data with length 8489
+skip a sample with length 41106
+skip a sample with length 44611
+skip a sample with length 50787
+Yielding data with length 10008
+Yielding data with length 32829
+Yielding data with length 23593
+Yielding data with length 29907
+skip a sample with length 42486
+Yielding data with length 25500
+Yielding data with length 34717
+Yielding data with length 29714
+Yielding data with length 16266
+Yielding data with length 17271
+Yielding data with length 20547
+Yielding data with length 22351
+Yielding data with length 26637
+Yielding data with length 32390
+Yielding data with length 30503
+Yielding data with length 29728
+skip a sample with length 42486
+Yielding data with length 21561
+Yielding data with length 16923
+Yielding data with length 19642
+Yielding data with length 20198
+Yielding data with length 22735
+Yielding data with length 32930
+Yielding data with length 24262
+Yielding data with length 34823
+Yielding data with length 28608
+Yielding data with length 28122
+Yielding data with length 24532
+Yielding data with length 26210
+Yielding data with length 36308
+Yielding data with length 27414
+Yielding data with length 30425
+Yielding data with length 30774
+block_dataset repeat in rank-6 worker-0
+block_dataset repeat in rank-0 worker-0
+skip a sample with length 42480
+Yielding data with length 15870
+Yielding data with length 15590
+Yielding data with length 18509
+Yielding data with length 23812
+Yielding data with length 18170
+Yielding data with length 32514
+Yielding data with length 24814
+Yielding data with length 28298
+Yielding data with length 9988
+Yielding data with length 18332
+Yielding data with length 21420
+Yielding data with length 23903
+Yielding data with length 25120
+Yielding data with length 28991
+Yielding data with length 30114
+Yielding data with length 30128
+skip a sample with length 43202
+skip a sample with length 43202
+Yielding data with length 17850
+Yielding data with length 18166
+Yielding data with length 22663
+Yielding data with length 20751
+Yielding data with length 19273
+Yielding data with length 17552
+Yielding data with length 26616
+Yielding data with length 28527
+block_dataset repeat in rank-3 worker-0
+block_dataset repeat in rank-5 worker-0
+Yielding data with length 13466
+Yielding data with length 14852
+block_dataset repeat in rank-7 worker-0
+Yielding data with length 20760
+Yielding data with length 22448
+Yielding data with length 20269
+Yielding data with length 27307
+Yielding data with length 31128
+Yielding data with length 23848
+block_dataset repeat in rank-2 worker-0
+Yielding data with length 8948
+skip a sample with length 41106
+Yielding data with length 10367
+Yielding data with length 12612
+Yielding data with length 18632
+Yielding data with length 32428
+Yielding data with length 25651
+Yielding data with length 22117
+Yielding data with length 30468
+Yielding data with length 12051
+Yielding data with length 13346
+Yielding data with length 15726
+Yielding data with length 11383
+skip a sample with length 41094
+Yielding data with length 19358
+Yielding data with length 31964
+skip a sample with length 43245
+Yielding data with length 34359
+Yielding data with length 25146
+block_dataset repeat in rank-1 worker-0
+Yielding data with length 12528
+Yielding data with length 14445
+Yielding data with length 21808
+skip a sample with length 48060
+Yielding data with length 24973
+Yielding data with length 24141
+Yielding data with length 35965
+Yielding data with length 29665
+Yielding data with length 28975
+skip a sample with length 42480
+skip a sample with length 48060
+Yielding data with length 15182
+Yielding data with length 19712
+skip a sample with length 41160
+Yielding data with length 19698
+Yielding data with length 18255
+Yielding data with length 30749
+Yielding data with length 34841
+Yielding data with length 22848
+Yielding data with length 28618
+block_dataset repeat in rank-4 worker-0
+Yielding data with length 12071
+Yielding data with length 15527
+Yielding data with length 19227
+Yielding data with length 19199
+skip a sample with length 50787
+Yielding data with length 25207
+Yielding data with length 26500
+skip a sample with length 57756
+Yielding data with length 25915
+skip a sample with length 57756
+Yielding data with length 29886
+skip a sample with length 43245
+skip a sample with length 41160
+skip a sample with length 41094
+Yielding data with length 18659
+Yielding data with length 23460
+Yielding data with length 29942
+Yielding data with length 30289
+Yielding data with length 27297
+Yielding data with length 28034
+Yielding data with length 29025
+Yielding data with length 36590
+skip a sample with length 44611
+skip a sample with length 50787
+skip a sample with length 44611
+Yielding data with length 24792
+Yielding data with length 20748
+Yielding data with length 23187
+Yielding data with length 19037
+Yielding data with length 31561
+Yielding data with length 34200
+Yielding data with length 26330
+Yielding data with length 30027
+skip a sample with length 41106
+Yielding data with length 12095
+Yielding data with length 15214
+Yielding data with length 17243
+Yielding data with length 23097
+Yielding data with length 24142
+Yielding data with length 28934
+Yielding data with length 29052
+skip a sample with length 42486
+Yielding data with length 34556
+Yielding data with length 14895
+Yielding data with length 19552
+Yielding data with length 22053
+Yielding data with length 29467
+Yielding data with length 23444
+Yielding data with length 26636
+Yielding data with length 33801
+Yielding data with length 34191
+skip a sample with length 42486
+Yielding data with length 20414
+Yielding data with length 21739
+Yielding data with length 23877
+Yielding data with length 26520
+Yielding data with length 24877
+Yielding data with length 27696
+Yielding data with length 27597
+Yielding data with length 32703
+block_dataset repeat in rank-0 worker-0
+block_dataset repeat in rank-6 worker-0
+Yielding data with length 18005
+Yielding data with length 26527
+Yielding data with length 20791
+Yielding data with length 20719
+Yielding data with length 22114
+Yielding data with length 22512
+Yielding data with length 29336
+Yielding data with length 31527
+Yielding data with length 9284
+skip a sample with length 42480
+Yielding data with length 17316
+Yielding data with length 19314
+Yielding data with length 25239
+Yielding data with length 19703
+Yielding data with length 21232
+Yielding data with length 17268
+Yielding data with length 26931
+skip a sample with length 43202
+Yielding data with length 16230
+Yielding data with length 19692
+Yielding data with length 23196
+Yielding data with length 22444
+Yielding data with length 29708
+Yielding data with length 20680
+Yielding data with length 30765
+Yielding data with length 27917
+skip a sample with length 43202
+Yielding data with length 17207
+Yielding data with length 17853
+Yielding data with length 23427
+block_dataset repeat in rank-5 worker-0
+Yielding data with length 27646
+Yielding data with length 25169
+Yielding data with length 26475
+Yielding data with length 25127
+Yielding data with length 27339
+block_dataset repeat in rank-3 worker-0
+block_dataset repeat in rank-7 worker-0
+Yielding data with length 16546
+Yielding data with length 16256
+Yielding data with length 22339
+Yielding data with length 17919
+Yielding data with length 23138
+Yielding data with length 19676
+Yielding data with length 24070
+Yielding data with length 25924
+block_dataset repeat in rank-2 worker-0
+Yielding data with length 14569
+Yielding data with length 31705
+Yielding data with length 24120
+Yielding data with length 33709
+Yielding data with length 26245
+Yielding data with length 39397
+Yielding data with length 31035
+Yielding data with length 15921
+skip a sample with length 41094
+skip a sample with length 41106
+Yielding data with length 11323
+Yielding data with length 20758
+Yielding data with length 24109
+skip a sample with length 43245
+skip a sample with length 48060
+Yielding data with length 21739
+Yielding data with length 22062
+Yielding data with length 11069
+Yielding data with length 33774
+Yielding data with length 24783
+Yielding data with length 13348
+Yielding data with length 13218
+Yielding data with length 17288
+Yielding data with length 26493
+Yielding data with length 24246
+Yielding data with length 26920
+Yielding data with length 28599
+Yielding data with length 31042
+block_dataset repeat in rank-1 worker-0
+skip a sample with length 48060
+skip a sample with length 41160
+Yielding data with length 25722
+Yielding data with length 33186
+skip a sample with length 50787
+Yielding data with length 19367
+Yielding data with length 26598
+Yielding data with length 18672
+Yielding data with length 27291
+Yielding data with length 33105
+skip a sample with length 57756
+Yielding data with length 31380
+skip a sample with length 43245
+skip a sample with length 42480
+skip a sample with length 41160
+Yielding data with length 22996
+Yielding data with length 18896
+Yielding data with length 19621
+Yielding data with length 24453
+Yielding data with length 37227
+Yielding data with length 28758
+skip a sample with length 57756
+Yielding data with length 31736
+Yielding data with length 26241
+block_dataset repeat in rank-4 worker-0
+skip a sample with length 44611
+skip a sample with length 50787
+Yielding data with length 8502
+skip a sample with length 41094
+Yielding data with length 23339
+Yielding data with length 26828
+Yielding data with length 22141
+Yielding data with length 27917
+Yielding data with length 30731
+Yielding data with length 35152
+Yielding data with length 32504
+Yielding data with length 14524
+Yielding data with length 21770
+Yielding data with length 23021
+Yielding data with length 31645
+Yielding data with length 34056
+skip a sample with length 44611
+Yielding data with length 24506
+Yielding data with length 27457
+Yielding data with length 28513
+Yielding data with length 15147
+skip a sample with length 41106
+Yielding data with length 16968
+Yielding data with length 13491
+Yielding data with length 22125
+Yielding data with length 21138
+Yielding data with length 24903
+Yielding data with length 28043
+skip a sample with length 42486
+Yielding data with length 31782
+Yielding data with length 6701
+Yielding data with length 13494
+Yielding data with length 15875
+Yielding data with length 17545
+Yielding data with length 21060
+Yielding data with length 22115
+Yielding data with length 29729
+Yielding data with length 31752
+skip a sample with length 42486
+Yielding data with length 17316
+block_dataset repeat in rank-0 worker-0
+Yielding data with length 24478
+Yielding data with length 24714
+skip a sample with length 42480
+Yielding data with length 24145
+Yielding data with length 25188
+Yielding data with length 21724
+block_dataset repeat in rank-6 worker-0
+Yielding data with length 28652
+Yielding data with length 31606
+Yielding data with length 8619
+Yielding data with length 16608
+Yielding data with length 21134
+Yielding data with length 28671
+Yielding data with length 24139
+Yielding data with length 34737
+Yielding data with length 28959
+Yielding data with length 30967
