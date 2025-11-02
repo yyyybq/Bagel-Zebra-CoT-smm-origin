@@ -37,9 +37,9 @@ DATASET_INFO = {
     },
         'block_dataset_random': {
         'block_dataset_random': {
-            'data_dir': "/scratch/by2593/project/SMM/random_pipeline/random_blocks",
-            'jsonl_path': '/scratch/by2593/project/SMM/SMM_data/random_block.jsonl',
-            'image_prefix_dir': '/scratch/by2593/project/SMM/random_pipeline/random_blocks',  # Base path for relative image paths
+            'data_dir': "",
+            'jsonl_path': './ranGenTraining_views1357_imgfirst.json',
+            'image_prefix_dir': '',  # Base path for relative image paths
             # 'num_total_samples': 100,
         },
     },
