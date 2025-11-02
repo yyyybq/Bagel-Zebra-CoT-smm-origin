@@ -1,4 +1,4 @@
-block_dataset_random:
+block_dataset_random2:
   dataset_names: 
   - block_dataset_random2
   jsonl_path_list: ["./ranGenTraining_views1357_textfirst.jsonl"]
