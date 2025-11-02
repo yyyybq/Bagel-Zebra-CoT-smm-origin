@@ -124,7 +124,7 @@ def generate_thought_trace(scene_name: str, blocks: List[Dict], total_blocks: in
 def generate_final_answer(total_blocks: int) -> str:
     """生成最终答案"""
     # return f"Through the above {total_blocks} steps, I have successfully built the target shape from individual blocks."
-    return f"[BUILD_COMPLETED]"
+    return f"<eoc>"
 
 
 def generate_image_paths(scene_folder: Path, scene_name: str, blocks: List[Dict], view_num: int = 1) -> Dict[str, str]:
@@ -188,7 +188,7 @@ def process_scene(scene_folder: Path, view_num: int = 1) -> Dict[str, Any]:
 def main():
     # 设置输入输出路径
     input_folder = Path("/lustre/fsw/portfolios/nvr/users/ymingli/projects/ljh/random_blocks/")
-    output_file = Path("./ranGenTraining_views1357_imgfirst.jsonl")
+    output_file = Path("./ranGenTraining_views1357_textfirst.jsonl")
     
     
     all_training_data = []
