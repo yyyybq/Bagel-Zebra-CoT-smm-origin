@@ -4,7 +4,7 @@
 
 # Change to the project directory
 cd /lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/Bagel-Zebra-CoT-smm-origin
-source /home/ymingli/miniconda3/etc/profile.d/conda.sh
+source /lustre/fsw/portfolios/nvr/users/ymingli/miniconda3/etc/profile.d/conda.sh
 conda activate bagel
 export PYTHONPATH=/lustre/fsw/portfolios/nvr/users/ymingli/projects/Bagel-Zebra-CoT-smm-origin:$PYTHONPATH
 export WANDB_MODE=offline
