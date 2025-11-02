@@ -71,15 +71,33 @@ def generate_thought_trace(blocks: List[Dict]) -> str:
         block_type = block['type']
         depend_desc = get_depend_description(block, blocks)
 
-        thought = f"<image_start>[reasoning_image_{step_num}]<image_end> "
-        thought += f"THOUGHT {step_num}: In the image generated for step {step_num}, the {color} {block_type} has been placed {depend_desc}. I review the current state and plan the next addition, then generate an image showing the state after step {step_num}. "
+        # 定义多种风格的thought模板
+        thought_templates = [
+            # 风格1: 先想象，生成图片，再描述图片
+            f"<image_start>[reasoning_image_{step_num}]<image_end> THOUGHT {step_num}: I imagine placing the {color} {block_type} {depend_desc} for step {step_num}. The generated image shows this imagination — the {color} {block_type} is now positioned {depend_desc}, and I can see how the construction progresses.",
+            
+            # 风格2: 生成图片后，将其作为对下一步的规划
+            f"<image_start>[reasoning_image_{step_num}]<image_end> THOUGHT {step_num}: For step {step_num}, I visualize adding a {color} {block_type} {depend_desc}. This generated image captures my mental picture of the state after this step. Looking at this visualization, I can better plan the subsequent additions.",
+            
+            # 风格3: 强调生成的图像是想象的具现化
+            f"<image_start>[reasoning_image_{step_num}]<image_end> THOUGHT {step_num}: I first envision step {step_num} where the {color} {block_type} should be placed {depend_desc}. The image I generated materializes this vision. In this visualization, the block has been successfully positioned, allowing me to review and refine my construction strategy.",
+            
+            # 风格4: 图像作为思考过程的一部分
+            f"<image_start>[reasoning_image_{step_num}]<image_end> THOUGHT {step_num}: To proceed with step {step_num}, I generate an image showing my plan: placing the {color} {block_type} {depend_desc}. This visual representation of my thought helps validate the spatial arrangement and guides the next steps in the construction sequence.",
+        ]
+        
+        # 根据步骤选择不同的模板风格
+        template_idx = (i - 1) % len(thought_templates)
         
         # 特殊处理最后一步
         if i == len(blocks) - 1:
             thought = (
                 f"<image_start>[reasoning_image_{step_num}]<image_end> "
-                f"THOUGHT {step_num}: In the image generated for step {step_num} (final step), the {color} {block_type} has been placed {depend_desc}. This completes the construction. "
+                f"THOUGHT {step_num}: For the final step {step_num}, I visualize placing the {color} {block_type} {depend_desc}. "
+                f"The generated image shows the completed construction with all blocks properly positioned. This completes the building process."
             )
+        else:
+            thought = thought_templates[template_idx]
         
         thoughts.append(thought)
     
@@ -160,7 +178,7 @@ def process_scene(scene_folder: Path, view_num: int = 1) -> Dict[str, Any]:
 def main():
     # 设置输入输出路径
     input_folder = Path("/lustre/fsw/portfolios/nvr/users/ymingli/projects/ljh/random_blocks/")
-    output_file = Path("./ranGenTraining_views1357_imgfirst.json")
+    output_file = Path("./ranGenTraining_views1357_imgfirst.jsonl")
     
     all_training_data = []
     
@@ -183,9 +201,10 @@ def main():
             print(f"Error processing scene {scene_name}: {e}")
             continue
     
-    # 保存为JSON文件
+    # 保存为JSONL文件（每行一个JSON对象）
     with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(all_training_data, f, ensure_ascii=False, indent=2)
+        for item in all_training_data:
+            f.write(json.dumps(item, ensure_ascii=False) + '\n')
     
     print(f"\nGenerated {len(all_training_data)} training samples")
     print(f"Saved to: {output_file}")
