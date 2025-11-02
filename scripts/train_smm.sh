@@ -6,7 +6,7 @@
 cd /lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/Bagel-Zebra-CoT-smm-origin
 source /lustre/fsw/portfolios/nvr/users/ymingli/miniconda3/etc/profile.d/conda.sh
 conda activate bagel
-export PYTHONPATH=/lustre/fsw/portfolios/nvr/users/ymingli/projects/Bagel-Zebra-CoT-smm-origin:$PYTHONPATH
+export PYTHONPATH=/lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/Bagel-Zebra-CoT-smm-origin:$PYTHONPATH
 export WANDB_MODE=offline
 export WANDB_ANONYMOUS=must
 NUM_NODES=1
