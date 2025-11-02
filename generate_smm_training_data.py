@@ -88,7 +88,8 @@ def generate_thought_trace(blocks: List[Dict]) -> str:
 
 def generate_final_answer(total_blocks: int) -> str:
     """生成最终答案"""
-    return f"Through the above {total_blocks} steps, I have successfully built the target shape from individual blocks."
+    return f"<eoc>"
+    # return f"Through the above {total_blocks} steps, I have successfully built the target shape from individual blocks."
 
 
 def generate_image_paths(scene_folder: Path, scene_name: str, blocks: List[Dict], unique_blocks: List[Dict], view_num: int = 1) -> Dict[str, str]:
