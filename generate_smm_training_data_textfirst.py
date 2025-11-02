@@ -157,7 +157,9 @@ def generate_image_paths(scene_folder: Path, scene_name: str, blocks: List[Dict]
 def process_scene(scene_folder: Path, view_num: int = 1) -> Dict[str, Any]:
     """处理单个场景，生成训练数据"""
     scene_name = scene_folder.name
-    json_file = scene_folder / f"{scene_name}.json"
+    # json_file = scene_folder / f"{scene_name}.json"
+    json_file = scene_folder / f"final_state.json"
+
     
     # 读取JSON文件
     with open(json_file, 'r') as f:
