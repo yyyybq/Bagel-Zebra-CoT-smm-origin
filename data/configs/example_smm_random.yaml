@@ -1,7 +1,7 @@
 block_dataset_random:
   dataset_names: 
   - block_dataset_random
-  jsonl_path_list: ["./ranGenTraining_views1357_imgfirst.json"]
+  jsonl_path_list: ["./ranGenTraining_views1357_imgfirst.jsonl"]
   num_used_data: None
   image_prefix_dir: "/lustre/fsw/portfolios/nvr/users/ymingli/projects/ljh/random_blocks/"
   image_transform_args:

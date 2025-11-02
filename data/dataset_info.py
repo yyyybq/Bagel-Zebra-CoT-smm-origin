@@ -38,7 +38,7 @@ DATASET_INFO = {
         'block_dataset_random': {
         'block_dataset_random': {
             'data_dir': "",
-            'jsonl_path': './ranGenTraining_views1357_imgfirst.json',
+            'jsonl_path': './ranGenTraining_views1357_imgfirst.jsonl',
             'image_prefix_dir': '',  # Base path for relative image paths
             # 'num_total_samples': 100,
         },
