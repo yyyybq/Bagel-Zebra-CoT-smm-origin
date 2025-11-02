@@ -9,6 +9,8 @@ conda activate bagel
 export PYTHONPATH=/lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/Bagel-Zebra-CoT-smm-origin:$PYTHONPATH
 export WANDB_MODE=offline
 export WANDB_ANONYMOUS=must
+
+
 NUM_NODES=1
 NODE_RANK=0
 MASTER_ADDR=localhost

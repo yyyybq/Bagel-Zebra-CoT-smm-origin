@@ -401,7 +401,16 @@ def main():
 
     # Setup model:
     if training_args.finetune_from_hf:
-        llm_config = Qwen2Config.from_json_file(os.path.join(model_args.model_path, "llm_config.json"))
+        # 只让 rank 0 加载配置文件，避免分布式训练时的文件竞争
+        if dist.get_rank() == 0:
+            llm_config = Qwen2Config.from_json_file(os.path.join(model_args.model_path, "llm_config.json"))
+        else:
+            llm_config = None
+        # 同步所有进程
+        dist.barrier()
+        # 如果不是 rank 0，现在再加载（此时 rank 0 已经完成了加载）
+        if dist.get_rank() != 0:
+            llm_config = Qwen2Config.from_json_file(os.path.join(model_args.model_path, "llm_config.json"))
     else:
         llm_config = Qwen2Config.from_pretrained(model_args.llm_path)
     llm_config.layer_module = model_args.layer_module
