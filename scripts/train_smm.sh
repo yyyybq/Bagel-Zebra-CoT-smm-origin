@@ -4,6 +4,7 @@
 
 # Change to the project directory
 cd /lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/Bagel-Zebra-CoT-smm-origin
+source /home/ymingli/miniconda3/etc/profile.d/conda.sh
 conda activate bagel
 export PYTHONPATH=/lustre/fsw/portfolios/nvr/users/ymingli/projects/Bagel-Zebra-CoT-smm-origin:$PYTHONPATH
 export WANDB_MODE=offline
@@ -49,8 +50,8 @@ torchrun \
   --warmup_steps 50 \
   --total_steps 5000 \
   --results_dir results/ \
-  --checkpoint_dir results/checkpoints_random_views1357_imgfirst/ > run.out 2> run.err \
+  --checkpoint_dir results/checkpoints_random_views1357_imgfirst/ \
   --cpu_offload True \
-
+  > run.out 2> run.err \
 
    # bash scripts/train_smm.sh
