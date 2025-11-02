@@ -14,7 +14,7 @@ NODE_RANK=0
 MASTER_ADDR=localhost
 MASTER_PORT=29500
 NPROC_PER_NODE=8
-MODEL_PATH=multimodal-reasoning-lab/Bagel-Zebra-CoT
+MODEL_PATH=/home/ymingli/.cache/huggingface/hub/models--multimodal-reasoning-lab--Bagel-Zebra-CoT/snapshots/ebce32410ee2062d073feae484ea2c6c1515fba8
 
 # replace the variables with your own
 torchrun \
