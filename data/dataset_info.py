@@ -14,6 +14,7 @@ DATASET_REGISTRY = {
     'think_trace': ThinkTraceJSONLIterableDataset,
     'block_dataset': ThinkTraceJSONLIterableDataset,
     'block_dataset_random': ThinkTraceJSONLIterableDataset,
+    'block_dataset_random2': ThinkTraceJSONLIterableDataset,
 }
 
 
@@ -35,7 +36,7 @@ DATASET_INFO = {
             # 'num_total_samples': 100,
         },
     },
-        'block_dataset_random': {
+    'block_dataset_random': {
         'block_dataset_random': {
             'data_dir': "",
             'jsonl_path': './ranGenTraining_views1357_imgfirst.jsonl',
@@ -43,4 +44,13 @@ DATASET_INFO = {
             # 'num_total_samples': 100,
         },
     },
+    'block_dataset_random2': {
+        'block_dataset_random2': {
+            'data_dir': "",
+            'jsonl_path': './ranGenTraining_views1357_textfirst.jsonl',
+            'image_prefix_dir': '',  # Base path for relative image paths
+            # 'num_total_samples': 100,
+        },
+    },
+
 }
