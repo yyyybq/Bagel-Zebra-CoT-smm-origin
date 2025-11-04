@@ -48,7 +48,7 @@ torchrun \
   --sharding_strategy="HYBRID_SHARD" \
   --wandb_project "zebra-cot" \
   --wandb_name "h200-zebra-cot-$(date +%Y%m%d_%H%M%S)" \
-  --save_every 100 \
+  --save_every 50 \
   --warmup_steps 50 \
   --total_steps 5000 \
   --results_dir /lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/results/ \
