@@ -15,6 +15,7 @@ DATASET_REGISTRY = {
     'block_dataset': ThinkTraceJSONLIterableDataset,
     'block_dataset_random': ThinkTraceJSONLIterableDataset,
     'block_dataset_random2': ThinkTraceJSONLIterableDataset,
+    'block_dataset_semantic_part1': ThinkTraceJSONLIterableDataset,
 }
 
 
