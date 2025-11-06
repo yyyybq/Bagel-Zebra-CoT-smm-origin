@@ -1,9 +1,9 @@
-block_dataset:
+block_dataset_semantic_part1:
   dataset_names: 
-  - block_dataset
-  jsonl_path_list: ["/scratch/by2593/project/SMM/SMM_data/semantic_block_train_part1.jsonl"]
+  - block_dataset_semantic_part1
+  jsonl_path_list: ["./semantic_part1_views1357_imgfirst.jsonl"]
   num_used_data: None
-  image_prefix_dir: "/scratch/by2593/project/SMM/semantic_blocks_part1"
+  image_prefix_dir: "/lustre/fsw/portfolios/nvr/users/ymingli/projects/ljh/semantic_blocks_part1"
   image_transform_args:
     image_stride: 16
     max_image_size: 512  # VAE使用stride=16, 512/16=32 patches

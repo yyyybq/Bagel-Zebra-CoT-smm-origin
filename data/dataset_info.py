@@ -27,13 +27,12 @@ DATASET_INFO = {
             # 'num_total_samples': 100,
         },
     },
-    'block_dataset': {
-        'block_dataset': {
-            'data_dir': "/scratch/by2593/project/SMM/semantic_blocks_part1",
+    'block_dataset_semantic_part1': {
+        'block_dataset_semantic_part1': {
+            'data_dir': "",
             # 'jsonl_path': '/scratch/by2593/project/SMM/SMM_data/semantic_block_train_part1_v2_reordered.jsonl',
-            'jsonl_path': '/scratch/by2593/project/SMM/SMM_data/semantic_block_train_part1.jsonl',
-            'image_prefix_dir': '/scratch/by2593/project/SMM/semantic_blocks_part1',  # Base path for relative image paths
-            # 'num_total_samples': 100,
+            'jsonl_path': './semantic_part1_views1357_imgfirst.jsonl',
+            'image_prefix_dir': ''
         },
     },
     'block_dataset_random': {
