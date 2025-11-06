@@ -428,7 +428,9 @@ def main():
         if training_args.finetune_from_hf:
             vit_config = SiglipVisionConfig.from_json_file(os.path.join(model_args.model_path, "vit_config.json"))
         else:
-            vit_config = SiglipVisionConfig.from_pretrained(model_args.vit_path)
+            # vit_config = SiglipVisionConfig.from_pretrained(model_args.vit_path) 1106
+            # 这是正确的逻辑，与 if 分支保持一致
+            vit_config = SiglipVisionConfig.from_json_file(os.path.join(model_args.vit_path, "vit_config.json"))
         vit_config.num_hidden_layers = vit_config.num_hidden_layers + 1 + model_args.vit_select_layer
         vit_config.rope = model_args.vit_rope
         if training_args.finetune_from_hf:
