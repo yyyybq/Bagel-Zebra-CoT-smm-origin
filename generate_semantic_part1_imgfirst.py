@@ -121,7 +121,7 @@ def generate_image_paths(scene_folder: Path, scene_name: str, blocks: List[Dict]
         block_image_path = BLOCK_IMAGE_PATH_TEMPLATE.format(block_type=block_type, color=color)
         image_paths[f"problem_image_{i+1}"] = block_image_path
 
-    final_image_path = scene_folder / "final_state" / f"{scene_name}_{view_num}.png"
+    final_image_path = scene_folder / "final_state" / f"{scene_name}_final_{view_num}.png"
     image_paths[f"problem_image_{len(unique_blocks)+1}"] = str(final_image_path)
 
     # problem_image_{n+2}: step 0的图片
@@ -223,3 +223,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# python generate_semantic_part1_imgfirst.py
