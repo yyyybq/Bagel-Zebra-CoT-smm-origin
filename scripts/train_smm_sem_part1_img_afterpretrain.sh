@@ -30,6 +30,7 @@ torchrun \
   --model_path $MODEL_PATH \
   --layer_module Qwen2MoTDecoderLayer \
   --llm_path Qwen/Qwen2.5-0.5B-Instruct \
+  --vit_path multimodal-reasoning-lab/siglip-so400m-14-980-flash-attn2-navit \
   --max_latent_size 64 \
   --visual_und True \
   --finetune_from_hf False \
