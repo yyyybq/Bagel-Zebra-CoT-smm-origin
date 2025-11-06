@@ -437,8 +437,7 @@ def main():
             vit_model = SiglipVisionModel(vit_config)
         else:
             # vit_model = SiglipVisionModel.from_pretrained(model_args.vit_path, config=vit_config)
-            vit_weights_path = os.path.join(model_args.vit_path, "siglip-so400m-14-980-flash-attn2-navit")
-            vit_model = SiglipVisionModel.from_pretrained(vit_weights_path, config=vit_config)
+            vit_model = SiglipVisionModel(config=vit_config)
     if training_args.visual_gen:
         vae_model, vae_config = load_ae(
             # local_path=os.path.join(model_args.model_path, "ae.safetensors") 
