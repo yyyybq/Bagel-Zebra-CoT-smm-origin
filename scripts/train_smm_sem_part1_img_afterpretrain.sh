@@ -29,6 +29,7 @@ torchrun \
   --dataset_config_file ./data/configs/example_smm_semantic_part1.yaml \
   --model_path $MODEL_PATH \
   --layer_module Qwen2MoTDecoderLayer \
+  --llm_path Qwen/Qwen2.5-0.5B-Instruct \
   --max_latent_size 64 \
   --visual_und True \
   --finetune_from_hf False \
