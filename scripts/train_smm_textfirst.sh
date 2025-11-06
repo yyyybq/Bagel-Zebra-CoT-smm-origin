@@ -40,9 +40,9 @@ torchrun \
   --lr_scheduler cosine \
   --min_lr 1e-6 \
   --num_worker 1 \
-  --expected_num_tokens 35000 \
-  --max_num_tokens 35000 \
-  --max_num_tokens_per_sample 35000 \
+  --expected_num_tokens 45000 \
+  --max_num_tokens 45000 \
+  --max_num_tokens_per_sample 45000 \
   --prefer_buffer_before 10000 \
   --num_shard=$NPROC_PER_NODE \
   --sharding_strategy="HYBRID_SHARD" \
