@@ -30,7 +30,7 @@ torchrun \
   --model_path $MODEL_PATH \
   --layer_module Qwen2MoTDecoderLayer \
   --llm_path Qwen/Qwen2.5-0.5B-Instruct \
-  --vit_path multimodal-reasoning-lab/siglip-so400m-14-980-flash-attn2-navit \
+  --vit_path /lustre/fsw/portfolios/nvr/users/ymingli/hf_cache/models--multimodal-reasoning-lab--Bagel-Zebra-CoT/snapshots/ebce32410ee2062d073feae484ea2c6c1515fba8/siglip-so400m-14-980-flash-attn2-navit \
   --max_latent_size 64 \
   --visual_und True \
   --finetune_from_hf False \
