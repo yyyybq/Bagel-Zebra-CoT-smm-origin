@@ -1,48 +1,24 @@
 #!/bin/bash
-#SBATCH --job-name=bagel-zebra-cot-smm
-#SBATCH --partition=h200_tandon
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=32
-#SBATCH --gres=gpu:h200:8
-#SBATCH --mem=1600G
-#SBATCH --time=48:00:00
-#SBATCH --output=slurm_logs/train_smm_%j.out
-#SBATCH --error=slurm_logs/train_smm_%j.err
-
 # Copyright 2025 Bytedance Ltd. and/or its affiliates.
 # SPDX-License-Identifier: Apache-2.0
 
-# Load any necessary modules (adjust as needed for your cluster)
-# module load cuda/12.1
-# module load conda
-
-# Activate conda environment
-source /scratch/by2593/miniconda3/etc/profile.d/conda.sh
-conda activate bagel
-
 # Change to the project directory
-cd /scratch/by2593/Bagel-Zebra-CoT-origin
-
-# Set environment variables
-export HF_HOME=/dev/shm/
-export PYTHONPATH=/scratch/by2593/Bagel-Zebra-CoT-origin:$PYTHONPATH
+cd /lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/Bagel-Zebra-CoT-smm-origin
+source /lustre/fsw/portfolios/nvr/users/ymingli/miniconda3/etc/profile.d/conda.sh
+conda activate bagel
+export PYTHONPATH=/lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/Bagel-Zebra-CoT-smm-origin:$PYTHONPATH
 export WANDB_MODE=offline
 export WANDB_ANONYMOUS=must
 
-# SLURM variables
+
 NUM_NODES=1
 NODE_RANK=0
-MASTER_ADDR=$(hostname)
+MASTER_ADDR=localhost
 MASTER_PORT=29500
 NPROC_PER_NODE=8
-MODEL_PATH=/scratch/by2593/hf_cache/hub/models--multimodal-reasoning-lab--Bagel-Zebra-CoT/snapshots/ebce32410ee2062d073feae484ea2c6c1515fba8
+MODEL_PATH=/lustre/fsw/portfolios/nvr/users/ymingli/hf_cache/models--multimodal-reasoning-lab--Bagel-Zebra-CoT/snapshots/ebce32410ee2062d073feae484ea2c6c1515fba8
 
-echo "Starting SMM training on node: $SLURM_JOB_NODELIST"
-echo "Job ID: $SLURM_JOB_ID"
-echo "Number of GPUs: $NPROC_PER_NODE"
-
-# Run training
+# replace the variables with your own
 torchrun \
   --nnodes=$NUM_NODES \
   --node_rank=$NODE_RANK \
@@ -57,29 +33,31 @@ torchrun \
   --visual_und True \
   --finetune_from_hf True \
   --auto_resume True \
-  --resume-model-only True \
+  --resume-model-only False \
   --finetune-from-ema False \
   --log_every 1 \
   --lr 2e-5 \
   --lr_scheduler cosine \
   --min_lr 1e-6 \
   --num_worker 1 \
-  --expected_num_tokens 50000 \
-  --max_num_tokens 50000 \
-  --max_num_tokens_per_sample 50000 \
+  --expected_num_tokens 40000 \
+  --max_num_tokens 40000 \
+  --max_num_tokens_per_sample 40000 \
   --prefer_buffer_before 10000 \
   --num_shard=$NPROC_PER_NODE \
   --sharding_strategy="HYBRID_SHARD" \
   --wandb_project "smm" \
   --wandb_name "h200-zebra-cot-smm-sbatch-$(date +%Y%m%d_%H%M%S)" \
-  --save_every 100 \
+  --save_every 50 \
   --warmup_steps 50 \
   --total_steps 500 \
   --results_dir /lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/results/ \
   --checkpoint_dir /lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/results/checkpoints_smm_sem1_1106/ \
   --cpu_offload True \
-  --max_checkpoints 2
+  --max_checkpoints 2 \
+
 
 echo "SMM training completed on $(date)"
 
 # sbatch scripts/train_smm_sbatch.sh
+#   > run_sem1.out 2> run_sem1.err
