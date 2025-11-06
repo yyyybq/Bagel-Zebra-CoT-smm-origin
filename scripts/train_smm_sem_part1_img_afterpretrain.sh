@@ -35,7 +35,7 @@ torchrun \
   --visual_und True \
   --finetune_from_hf False \
   --auto_resume True \
-  --resume-model-only True \
+  --resume-model-only False \
   --finetune-from-ema False \
   --log_every 1 \
   --lr 2e-5 \
