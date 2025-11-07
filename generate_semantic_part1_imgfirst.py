@@ -214,7 +214,7 @@ def main():
     # 保存为JSONL文件（每行一个JSON对象）
     with open(output_file, 'w', encoding='utf-8') as f:
         for item in all_training_data:
-            print(item)
+            # print(item)
             f.write(json.dumps(item, ensure_ascii=False) + '\n')
     
     print(f"\nGenerated {len(all_training_data)} training samples")
