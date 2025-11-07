@@ -244,6 +244,7 @@ class ThinkTraceJSONLIterableDataset(InterleavedBaseIterableDataset, Distributed
 
         # 5. Add final answer
         data = self._add_text(data, final_answer, need_loss=True, enable_cfg=True)# ybq1025 need_loss=False
+        print(tokenizer.decode(data['input_ids'][:200]))
 
         return data
 
