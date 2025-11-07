@@ -36,16 +36,10 @@ from modeling.autoencoder import load_ae
 origin_checkpoint_dir = "/scratch/by2593/hf_cache/hub/models--multimodal-reasoning-lab--Bagel-Zebra-CoT/snapshots/ebce32410ee2062d073feae484ea2c6c1515fba8"
 checkpoint_dir = "/scratch/by2593/project/Bagel-Zebra-CoT/weights/checkpoints_smm_semantic_part1_reorder_questionimage/0000150"
 
+# checkpoint_file = "model.safetensors"
+# # checkpoint_file = "model_bf16.safetensors"
 
-checkpoint_dir = '/scratch/by2593/project/Bagel-Zebra-CoT/weights/checkpoints_smm_semantic_part1_reorder_v2_test/000010'
-checkpoint_dir = '/scratch/by2593/project/Bagel-Zebra-CoT/weights/checkpoints_smm_semantic_part1_reorder_v2/000150'
-checkpoint_dir = '/scratch/by2593/project/Bagel-Zebra-CoT/weights/checkpoints_smm_semantic_part1_v1_final/0000500'
-checkpoint_dir = "/scratch/by2593/hf_cache/hub/models--multimodal-reasoning-lab--Bagel-Zebra-CoT/snapshots/ebce32410ee2062d073feae484ea2c6c1515fba8"
-
-checkpoint_file = "model.safetensors"
-# checkpoint_file = "model_bf16.safetensors"
-
-checkpoint_path = os.path.join(checkpoint_dir, checkpoint_file)
+# checkpoint_path = os.path.join(checkpoint_dir, checkpoint_file)
 checkpoint_path = "/scratch/by2593/Bagel-Zebra-CoT-origin/results/checkpoints_smm_semantic_part1_v1_origin/0000050/model.safetensors"
 
 print(f"Available GPUs: {torch.cuda.device_count()}")

@@ -47,13 +47,13 @@ def generate_question_template(scene_name: str, blocks: List[Dict], view_angle: 
     question += f"The initial input includes {total_blocks} images of multiple blocks that will be used -- "
 
     for i in range(1, total_blocks + 1):
-        question += f"block {i}: <image_start>[problem_image_{i}]<image_end> "
+        question += f"block {i}: <|image_start|>[problem_image_{i}]<|image_end|> "
 
-    question += f"and an image of the final desired shape: <image_start>[problem_image_{total_blocks+1}]<image_end>. "
+    question += f"and an image of the final desired shape: <|image_start|>[problem_image_{total_blocks+1}]<|image_end|>. "
 
     question += f"I need to imagine and generate images of intermediate steps, leading up to the final construction. "
 
-    question += f" Step 0 has been completed: a {first_block['color']} {first_block['type']} block has been placed on top of the ground. The image after step 0 is provided: <image_start>[problem_image_{total_blocks+2}]<image_end>. "
+    question += f" Step 0 has been completed: a {first_block['color']} {first_block['type']} block has been placed on top of the ground. The image after step 0 is provided: <|image_start|>[problem_image_{total_blocks+2}]<|image_end|>. "
 
     question += "Now I need to generate the image for step 1, considering spatial relationships and stability."
 
@@ -74,16 +74,16 @@ def generate_thought_trace(blocks: List[Dict]) -> str:
         # 定义多种风格的thought模板
         thought_templates = [
             # 风格1: 先想象，生成图片，再描述图片
-            f"<image_start>[reasoning_image_{step_num}]<image_end> THOUGHT {step_num}: I imagine placing the {color} {block_type} {depend_desc} for step {step_num}. The generated image shows this imagination — the {color} {block_type} is now positioned {depend_desc}, and I can see how the construction progresses.",
+            f"<|image_start|>[reasoning_image_{step_num}]<|image_end|> THOUGHT {step_num}: I imagine placing the {color} {block_type} {depend_desc} for step {step_num}. The generated image shows this imagination — the {color} {block_type} is now positioned {depend_desc}, and I can see how the construction progresses.",
             
             # 风格2: 生成图片后，将其作为对下一步的规划
-            f"<image_start>[reasoning_image_{step_num}]<image_end> THOUGHT {step_num}: For step {step_num}, I visualize adding a {color} {block_type} {depend_desc}. This generated image captures my mental picture of the state after this step. Looking at this visualization, I can better plan the subsequent additions.",
+            f"<|image_start|>[reasoning_image_{step_num}]<|image_end|> THOUGHT {step_num}: For step {step_num}, I visualize adding a {color} {block_type} {depend_desc}. This generated image captures my mental picture of the state after this step. Looking at this visualization, I can better plan the subsequent additions.",
             
             # 风格3: 强调生成的图像是想象的具现化
-            f"<image_start>[reasoning_image_{step_num}]<image_end> THOUGHT {step_num}: I first envision step {step_num} where the {color} {block_type} should be placed {depend_desc}. The image I generated materializes this vision. In this visualization, the block has been successfully positioned, allowing me to review and refine my construction strategy.",
+            f"<|image_start|>[reasoning_image_{step_num}]<|image_end|> THOUGHT {step_num}: I first envision step {step_num} where the {color} {block_type} should be placed {depend_desc}. The image I generated materializes this vision. In this visualization, the block has been successfully positioned, allowing me to review and refine my construction strategy.",
             
             # 风格4: 图像作为思考过程的一部分
-            f"<image_start>[reasoning_image_{step_num}]<image_end> THOUGHT {step_num}: To proceed with step {step_num}, I generate an image showing my plan: placing the {color} {block_type} {depend_desc}. This visual representation of my thought helps validate the spatial arrangement and guides the next steps in the construction sequence.",
+            f"<|image_start|>[reasoning_image_{step_num}]<|image_end|> THOUGHT {step_num}: To proceed with step {step_num}, I generate an image showing my plan: placing the {color} {block_type} {depend_desc}. This visual representation of my thought helps validate the spatial arrangement and guides the next steps in the construction sequence.",
         ]
         
         # 根据步骤选择不同的模板风格
@@ -92,7 +92,7 @@ def generate_thought_trace(blocks: List[Dict]) -> str:
         # 特殊处理最后一步
         if i == len(blocks) - 1:
             thought = (
-                f"<image_start>[reasoning_image_{step_num}]<image_end> "
+                f"<|image_start|>[reasoning_image_{step_num}]<|image_end|> "
                 f"THOUGHT {step_num}: For the final step {step_num}, I visualize placing the {color} {block_type} {depend_desc}. "
                 f"The generated image shows the completed construction with all blocks properly positioned. This completes the building process."
             )
