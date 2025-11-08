@@ -78,3 +78,4 @@ if __name__ == "__main__":
     main()
 
 # python hf_upload.py yinbq/text_4v_random_1800 /lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/results/checkpoints_random_views1357_textfirst/0001800/model.safetensors
+# python hf_upload.py yinbq/sem_img_mv /lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/results/checkpoints_img_sem1_1107/0000450/model.safetensors

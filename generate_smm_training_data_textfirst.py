@@ -52,26 +52,26 @@ def get_depend_description(block: Dict, all_blocks: List[Dict]) -> str:
 def generate_question_template(scene_name: str, blocks: List[Dict], view_angle: str = "Front45") -> str:
     """生成问题模板"""
     total_blocks = len(blocks)
-    
+    first_block = blocks[0]
+
     question = (
-        f"Based on the construction task shown below, follow the instructions to complete the build. "
-        f"Given the final desired shape of blocks shown in the first image<image_start>[problem_image_1]<image_end> "
-        f"which is viewed from a {view_angle} angle, perform a series of specified manipulations. "
-        f"This involves multiple steps, each requiring the addition of a new block to progressively build the final shape. "
-        f"The initial input also includes {total_blocks} images of multiple blocks that will be used."
+        "My goal is to generate a visual guide for constructing a specific shape using a set of blocks. "
+        "This involves multiple steps, each requiring the addition of a new block to progressively build the final shape. "
     )
-    
-    # 添加每个积木的图片占位符
-    for i in range(total_blocks):
-        question += f"<image_start>[problem_image_{i+2}]<image_end>"
+
+    question += f"The initial input includes {total_blocks} images of multiple blocks that will be used -- "
+
+    for i in range(1, total_blocks + 1):
+        question += f"block {i}: <image_start>[problem_image_{i}]<image_end> "
+
+    question += f"and an image of the final desired shape: <image_start>[problem_image_{total_blocks+1}]<image_end>. "
+
+    question += f"I need to imagine and generate images of intermediate steps, leading up to the final construction. "
+
     
     # 添加step 0的描述
-    first_block = blocks[0]
-    question += (
-        f" Step 0 has been completed: a {first_block['color']} {first_block['type']} block has been placed "
-        f"on top of the ground. The image after step 0 is provided."
-        f"<image_start>[problem_image_{total_blocks+2}]<image_end>"
-    )
+
+    question += f" Step 0 has been completed: a {first_block['color']} {first_block['type']} block has been placed on top of the ground. The image after step 0 is provided: <image_start>[problem_image_{total_blocks+2}]<image_end>. "
     
     return question
 
@@ -192,10 +192,13 @@ def process_scene(scene_folder: Path, view_num: int = 1) -> Dict[str, Any]:
 def main():
     # 设置输入输出路径
     input_folder = Path("/lustre/fsw/portfolios/nvr/users/ymingli/projects/ljh/random_blocks/")
-    output_file = Path("./ranGenTraining_views1357_textfirst.jsonl")
     
+    # 定义所有要生成的视角
+    view_nums = [1, 3, 5, 7]
     
-    all_training_data = []
+    # 为所有视角和单独视角分别创建数据容器
+    all_views_data = []  # 包含所有视角的数据
+    single_view_data = {view: [] for view in view_nums}  # 每个视角单独的数据
     
     # 遍历所有场景文件夹
     scene_folders = sorted([f for f in input_folder.iterdir() if f.is_dir()])
@@ -207,21 +210,36 @@ def main():
         print(f"Processing scene: {scene_name}")
         
         try:
-            # 对每个视角生成训练数据（这里以view_1为例，可以扩展到所有视角）
-            training_data = process_scene(scene_folder, view_num=1)
-            all_training_data.append(training_data)
+            # 对每个视角生成训练数据
+            for view_num in view_nums:
+                training_data = process_scene(scene_folder, view_num=view_num)
+                
+                # 添加到所有视角的集合中
+                all_views_data.append(training_data)
+                
+                # 添加到对应单独视角的集合中
+                single_view_data[view_num].append(training_data)
             
         except Exception as e:
             print(f"Error processing scene {scene_name}: {e}")
             continue
     
-    # 保存为JSONL文件（每行一个JSON对象）
-    with open(output_file, 'w', encoding='utf-8') as f:
-        for item in all_training_data:
+    # 保存包含所有视角的JSONL文件
+    all_views_file = Path("./ranGenTraining_views1357_textfirst.jsonl")
+    with open(all_views_file, 'w', encoding='utf-8') as f:
+        for item in all_views_data:
             f.write(json.dumps(item, ensure_ascii=False) + '\n')
+    print(f"\nGenerated {len(all_views_data)} training samples (all views)")
+    print(f"Saved to: {all_views_file}")
     
-    print(f"\nGenerated {len(all_training_data)} training samples")
-    print(f"Saved to: {output_file}")
+    # 保存每个单独视角的JSONL文件
+    for view_num in view_nums:
+        view_file = Path(f"./ranGenTraining_view{view_num}_textfirst.jsonl")
+        with open(view_file, 'w', encoding='utf-8') as f:
+            for item in single_view_data[view_num]:
+                f.write(json.dumps(item, ensure_ascii=False) + '\n')
+        print(f"Generated {len(single_view_data[view_num])} training samples (view {view_num})")
+        print(f"Saved to: {view_file}")
 
 
 if __name__ == "__main__":
