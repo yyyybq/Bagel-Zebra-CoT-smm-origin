@@ -49,6 +49,9 @@ Update the checkpoint path to point to your model:
 ```python
 checkpoint_dir = "/path/to/your/HF_HOME/models/Bagel-Zebra-CoT"
 ```
+/scratch/by2593/hf_cache/hub/BAGEL-7B-MoT
+
+ByteDance-Seed/BAGEL-7B-MoT
 
 For example, under the `HF_HOME`, the path to the checkpoint folder is:
 
