@@ -51,8 +51,8 @@ torchrun \
   --save_every 50 \
   --warmup_steps 50 \
   --total_steps 5000 \
-  --results_dir results/ \
-  --checkpoint_dir results/checkpoints_random_views1357_imgfirst/ \
+  --results_dir /lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/results/ \
+  --checkpoint_dir /lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/results/checkpoints_random_views1357_imgfirst/ \
   --cpu_offload True \
   > run_sem1.out 2> run_sem1.err
 
