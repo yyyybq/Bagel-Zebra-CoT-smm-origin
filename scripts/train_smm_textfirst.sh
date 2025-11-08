@@ -54,6 +54,6 @@ torchrun \
   --results_dir /lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/results/ \
   --checkpoint_dir /lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/results/checkpoints_random_views1357_textfirst_right1108/ \
   --cpu_offload True \
-  > run_random_textfirst.out 2> run_random_textfirst.err
+  # > run_random_textfirst.out 2> run_random_textfirst.err
 
    # bash scripts/train_smm.sh
