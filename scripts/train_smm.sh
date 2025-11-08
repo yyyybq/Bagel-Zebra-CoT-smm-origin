@@ -54,6 +54,6 @@ torchrun \
   --results_dir /lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/results/ \
   --checkpoint_dir /lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/results/checkpoints_random_views1357_imgfirst/ \
   --cpu_offload True \
-  > run_sem1.out 2> run_sem1.err
+  # > run_sem1.out 2> run_sem1.err
 
    # bash scripts/train_smm.sh
