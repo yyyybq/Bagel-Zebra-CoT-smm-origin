@@ -40,9 +40,9 @@ torchrun \
   --lr_scheduler cosine \
   --min_lr 1e-6 \
   --num_worker 1 \
-  --expected_num_tokens 42000 \
-  --max_num_tokens 42000 \
-  --max_num_tokens_per_sample 42000 \
+  --expected_num_tokens 44000 \
+  --max_num_tokens 44000 \
+  --max_num_tokens_per_sample 44000 \
   --prefer_buffer_before 10000 \
   --num_shard=$NPROC_PER_NODE \
   --sharding_strategy="HYBRID_SHARD" \
@@ -59,5 +59,6 @@ torchrun \
 
 echo "SMM training completed on $(date)"
 
-# sbatch scripts/train_smm_sbatch.sh
+# sbatch train_smm_sem_part1_img.sh
+
 #   > run_sem1.out 2> run_sem1.err
