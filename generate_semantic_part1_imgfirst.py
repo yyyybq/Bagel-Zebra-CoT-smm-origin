@@ -55,7 +55,6 @@ def generate_question_template(scene_name: str, blocks: List[Dict], view_angle: 
 
     question += f" Step 0 has been completed: a {first_block['color']} {first_block['type']} block has been placed on top of the ground. The image after step 0 is provided: <image_start>[problem_image_{total_blocks+2}]<image_end>. "
 
-    question += "Now I need to generate the image for step 1, considering spatial relationships and stability."
 
     return question
 
@@ -63,6 +62,7 @@ def generate_question_template(scene_name: str, blocks: List[Dict], view_angle: 
 def generate_thought_trace(blocks: List[Dict]) -> str:
     """生成推理过程模板"""
     thoughts = []
+    thoughts.append("Now I need to generate the image for step 1.")
     
     # 为每个后续的block生成THOUGHT
     for i, block in enumerate(blocks[1:], start=1):

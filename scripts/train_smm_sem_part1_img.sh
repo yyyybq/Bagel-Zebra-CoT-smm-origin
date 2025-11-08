@@ -52,7 +52,7 @@ torchrun \
   --warmup_steps 50 \
   --total_steps 500 \
   --results_dir /lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/results/ \
-  --checkpoint_dir /lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/results/checkpoints_smm_sem1_1106/ \
+  --checkpoint_dir /lustre/fsw/portfolios/nvr/users/ymingli/projects/ybq/results/checkpoints_img_sem1_1107/ \
   --cpu_offload True \
   --max_checkpoints 2 \
 
