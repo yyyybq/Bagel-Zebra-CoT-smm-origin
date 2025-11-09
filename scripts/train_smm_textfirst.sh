@@ -33,7 +33,7 @@ torchrun \
   --resume-from $MODEL_PATH \
   --finetune_from_hf True \
   --auto_resume True \
-  --resume-model-only TrFalseue \
+  --resume-model-only False \
   --finetune-from-ema False \
   --log_every 1 \
   --lr 2e-5 \
