@@ -135,14 +135,14 @@ def generate_image_paths(scene_folder: Path, scene_name: str, blocks: List[Dict]
     # final_image_path = scene_folder / "final_state" / f"{scene_name}_final_{view_num}.png"
     final_image_path = scene_folder / "final_state" / f"{scene_name}_{view_num}.png"
 
-    image_paths["problem_image_1"] = str(final_image_path)
     
     # problem_image_2 到 problem_image_{n+1}: 每个积木的多视角图片
     for i, block in enumerate(blocks):
         block_type = block['type']
         color = block['color']
         block_image_path = BLOCK_IMAGE_PATH_TEMPLATE.format(block_type=block_type, color=color)
-        image_paths[f"problem_image_{i+2}"] = block_image_path
+        image_paths[f"problem_image_{i+1}"] = block_image_path
+    image_paths[f"problem_image_{len(blocks)+1}"] = str(final_image_path)
     
     # problem_image_{n+2}: step 0的图片
     step0_image_path = scene_folder / "steps" / f"view_{view_num}" / f"{scene_name}_step0_{view_num}.png"
