@@ -33,7 +33,7 @@ torchrun \
   --resume-from $MODEL_PATH \
   --finetune_from_hf True \
   --auto_resume True \
-  --resume-model-only True \
+  --resume-model-only TrFalseue \
   --finetune-from-ema False \
   --log_every 1 \
   --lr 2e-5 \
@@ -56,4 +56,4 @@ torchrun \
   --cpu_offload True \
   # > run_random_textfirst.out 2> run_random_textfirst.err
 
-   # bash scripts/train_smm.sh
+   # bash scripts/train_smm_textfirst.sh
