@@ -58,5 +58,4 @@ torchrun \
 
 echo "SMM training completed on $(date)"
 
-# sbatch scripts/train_smm_sbatch.sh
-# bash scripts/train_smm_t_mv.sh
+# bash scripts/train_smm_sem.sh

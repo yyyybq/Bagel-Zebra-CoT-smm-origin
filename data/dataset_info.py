@@ -57,7 +57,7 @@ DATASET_INFO = {
     'block_dataset_sem_textfirst_mv': {
         'block_dataset_sem_textfirst_mv': {
             'data_dir': "",
-            'jsonl_path': "./semantic_training_all_views_textfirst.jsonl",
+            'jsonl_path': "/lustre/fsw/portfolios/nvr/users/ymingli/projects/ljh/semantic_training_all_views_textfirst.jsonl",
             'image_prefix_dir': '',  # Base path for relative image paths
             # 'num_total_samples': 100,
         },

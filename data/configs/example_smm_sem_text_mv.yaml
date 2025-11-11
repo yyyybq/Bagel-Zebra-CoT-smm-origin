@@ -1,7 +1,7 @@
 block_dataset_sem_textfirst_mv:
   dataset_names: 
   - block_dataset_sem_textfirst_mv
-  jsonl_path_list: ["./semantic_training_all_views_textfirst.jsonl"]
+  jsonl_path_list: ["/lustre/fsw/portfolios/nvr/users/ymingli/projects/ljh/semantic_training_all_views_textfirst.jsonl"]
   num_used_data: None
   image_prefix_dir: ""
   image_transform_args:
