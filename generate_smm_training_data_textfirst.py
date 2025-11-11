@@ -127,6 +127,20 @@ def generate_final_answer(total_blocks: int) -> str:
     return f"<eoc>"
 
 
+def check_images_exist(image_paths: Dict[str, str]) -> tuple[bool, List[str]]:
+    """检查所有图片路径是否存在
+    
+    Returns:
+        (all_exist, missing_paths): 所有图片是否都存在，以及缺失的图片路径列表
+    """
+    missing_paths = []
+    for key, path in image_paths.items():
+        if not Path(path).exists():
+            missing_paths.append(f"{key}: {path}")
+    
+    return len(missing_paths) == 0, missing_paths
+
+
 def generate_image_paths(scene_folder: Path, scene_name: str, blocks: List[Dict], view_num: int = 1) -> Dict[str, str]:
     """生成所有图片路径的映射"""
     image_paths = {}
@@ -178,6 +192,11 @@ def process_scene(scene_folder: Path, view_num: int = 1) -> Dict[str, Any]:
     thought_trace = generate_thought_trace(scene_name, blocks, total_blocks)
     final_answer = generate_final_answer(total_blocks)
     image_paths = generate_image_paths(scene_folder, scene_name, blocks, view_num)
+    
+    # 检查所有图片路径是否存在
+    all_exist, missing_paths = check_images_exist(image_paths)
+    if not all_exist:
+        raise FileNotFoundError(f"Missing images for scene {scene_name} view {view_num}:\n" + "\n".join(missing_paths))
     
     # 组合成训练数据
     training_data = {

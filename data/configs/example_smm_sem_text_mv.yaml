@@ -1,0 +1,16 @@
+block_dataset_sem_textfirst_mv:
+  dataset_names: 
+  - block_dataset_sem_textfirst_mv
+  jsonl_path_list: ["./semantic_training_all_views_textfirst.jsonl"]
+  num_used_data: None
+  image_prefix_dir: ""
+  image_transform_args:
+    image_stride: 16
+    max_image_size: 512  # VAE使用stride=16, 512/16=32 patches
+    min_image_size: 512
+  vit_image_transform_args:
+    image_stride: 14
+    max_image_size: 512  # ViT使用stride=14, 512/14=36 patches (匹配模型能力)
+    min_image_size: 512
+  weight: 1.0
+  is_mandatory: true
